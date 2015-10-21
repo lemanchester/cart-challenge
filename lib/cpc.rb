@@ -1,10 +1,5 @@
-class CPC
-  attr_reader :quantity, :price
-
-  def initialize(quantity, price)
-    @quantity = quantity
-    @price = price
-  end
+require 'product_type'
+class CPC < ProductType
 
   def calculate
     quantity * price
