@@ -1,13 +1,17 @@
 class Product < Struct.new(:name, :price, :type)
-
   def subtotal(quantity)
-    if type == "CPM"
-      return (quantity / 1000) * price
-    elsif type == "CPC"
-      return quantity * price
-    else
-      return 1 * price
+    case type
+    when 'CPM' then cpm(quantity)
+    when 'CPC' then cpc(quantity)
+    else price
     end
   end
 
+  def cpm(quantity)
+    (quantity / 1000) * price
+  end
+
+  def cpc(quantity)
+    quantity * price
+  end
 end
