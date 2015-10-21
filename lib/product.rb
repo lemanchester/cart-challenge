@@ -1,11 +1,13 @@
+require 'cpm'
+require 'cpc'
 class Product < Struct.new(:name, :price, :type)
-
+ 
   def subtotal(quantity)
     case type
     when "CPM"
-      (quantity / 1000) * price
+      CPM.new(quantity, price).calculate
     when "CPC"
-      quantity * price
+      CPC.new(quantity, price).calculate
     else
       price
     end
