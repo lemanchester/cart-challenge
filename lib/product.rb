@@ -3,14 +3,7 @@ require 'cpc'
 class Product < Struct.new(:name, :price, :type)
  
   def subtotal(quantity)
-    case type
-    when "CPM"
-      CPM.new(quantity, price).calculate
-    when "CPC"
-      CPC.new(quantity, price).calculate
-    else
-      price
-    end
+    Object.const_defined?(type) ? Object.const_get(type).new(quantity, price).calculate : price
   end
 
 end
