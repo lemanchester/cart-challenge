@@ -7,6 +7,11 @@ class ProductType
   end
   
   def calculate
+    price
+  end
+
+  def self.const_missing(name)
+    self
   end
 
 end
